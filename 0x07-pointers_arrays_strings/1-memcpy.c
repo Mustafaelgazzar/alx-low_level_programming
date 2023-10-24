@@ -3,22 +3,21 @@
 /**
  *_memcpy - function that copies memory area.
  *
- *@n: function copies.
+ *@n: Length of source to be copied.
  *
- *@src: bytes from memory area.
- *@dest: to memory area.
+ *@src: Sourse.
+ *@dest: Memory area.
  *
- *Return: a pointer to @dest.
+ *Return: the pointer to dest.
  */
 
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
-	unsigned int i = 0;
+	unsigned int itr = 0;
 
-	while (i < n)
+	for (itr = 0; itr < n; itr++)
 	{
-		dest[1] = src[1];
-		i++;
+		dest[itr] = src[itr];
 	}
 	return (dest);
 }
