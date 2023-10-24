@@ -5,18 +5,18 @@
  *
  * @a: The 2D array (8x8) representing the chessboard.
  *
- * Return: void.
+ * Return: Always 0 success.
  */
 
 void print_chessboard(char (*a)[8])
 {
-	int itr, jtr;
+	int i, n;
 
-	for (itr = 0; itr < 8; itr++)
+	for (i = 0; i < 8; i++)
 	{
-		for (jtr = 0; jtr < 8; jtr++)
+		for (n = 0; n < 8; n++)
 		{
-			_putchar(a[itr][jtr]);
+			_putchar(a[i][n]);
 		}
 		_putchar('\0');
 	}
