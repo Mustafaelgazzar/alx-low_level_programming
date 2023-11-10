@@ -10,10 +10,10 @@
  * Return: Always 0.
  */
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	char (*p)(int, char **) = (char (*)(int, char **))main;
-	int b;
+	int bytes, i;
+	char *arr;
 
 	if (argc != 2)
 	{
@@ -21,15 +21,23 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	b = atoi(argv[1]);
+	bytes = atoi(argv[1]);
 
-	if (b < 0)
+	if (bytes < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
+	arr = (char *)main;
 
-	while (b--)
-		printf("%02hhx%s", *p++, b ? " " : "\n");
+	for (i = 0; i < bytes; i++)
+	{
+		if (i == bytes - 1)
+		{
+			printf("%02hhx\n", arr[i]);
+			break;
+		}
+		printf("%2hhx ", arr[i]);
+	}
 	return (0);
 }
