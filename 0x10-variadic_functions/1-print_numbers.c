@@ -3,25 +3,33 @@
 #include <stdarg.h>
 
 /**
- *print_numbers - prints numbers with separators
- *@separator: the string separator
- *@n: the number of arguments
- *@...: the integer to print
- *Return: void
+ * print_numbers - prints numbers with separators
+ * @separator: the string separator
+ * @n: the number of arguments
+ * @...: the integers to print
+ * Return: void
  */
-
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
-	va_list nums;
-	unsigned int index;
+	unsigned int i = n;
+	va_list ap;
 
-	for (index = 0; index < n; index++)
+	if (n == 0)
 	{
-		printf("%d", va_arg(nums, int));
-
-		if (index != (n - 1) && separator != NULL)
-			printf("%s", separator);
-	}
 	printf("\n");
-	va_end(nums);
+	return;
+	}
+
+	va_start(ap, n);
+
+	while (i--)
+	{
+	printf("%d", va_arg(ap, int));
+	if (i > 0)
+		printf("%s", separator ? separator : "");
+	}
+
+	printf("\n");
+
+	va_end(ap);
 }
