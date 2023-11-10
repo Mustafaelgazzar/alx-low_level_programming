@@ -1,14 +1,15 @@
 #include "variadic_functions.h"
+#include <stdio.h>
+#include <stdarg.h>
 
 /**
- *print_number - prints strings with separators
- *@separator: the string separator
- *@n: the number of arguments
- *@...: the strings to print
- *Return: void
+ * print_strings - prints strings with followed new line
+ * @separator: the string separator
+ * @n: the number of arguments
+ * @...: the strings to print
+ * Return: void
  */
-
-void print_numbers(const char *separator, const unsigned int n, ...)
+void print_strings(const char *separator, const unsigned int n, ...)
 {
 	int i = n;
 	char *str;
@@ -16,12 +17,15 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 
 	if (!n)
 	{
-		printf("\n");
-		return;
+	printf("\n");
+	return;
 	}
+
 	va_start(ap, n);
 	while (i--)
-		printf("%s%s", (str = va_arg(ap, char *)) ? str : "(nil)",
-				i ? (separator ? separator : "") : "\n");
+	{
+	str = va_arg(ap, char *);
+	printf("%s%s", str ? str : "(nil)", i ? (separator ? separator : "") : "\n");
+	}
 	va_end(ap);
 }
