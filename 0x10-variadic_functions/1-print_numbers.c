@@ -1,7 +1,9 @@
 #include "variadic_functions.h"
+#include <stdio.h>
+#include <stdarg.h>
 
 /**
- *print_number - prints numbers with separators
+ *print_numbers - prints numbers with separators
  *@separator: the string separator
  *@n: the number of arguments
  *@...: the integer to print
@@ -10,17 +12,16 @@
 
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
-	int i = n;
-	va_list ap;
+	va_list nums;
+	unsigned int index;
 
-	if (!n)
+	for (index = 0; index < n; index++)
 	{
-		printf("\n");
-		return;
+		printf("%d", va_arg(nums, int));
+
+		if (index != (n - 1) && separator != NULL)
+			printf("%s", separator);
 	}
-	va_start(ap, n);
-	while (i--)
-		printf("%d%s", va_arg(ap, int),
-				i ? (separator ? separator : "") : "\n");
-	va_end(ap);
+	printf("\n");
+	va_end(nums);
 }
